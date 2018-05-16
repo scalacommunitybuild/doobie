@@ -12,6 +12,7 @@ lazy val h2Version            = "1.4.197"
 lazy val hikariVersion        = "3.1.0"
 lazy val kindProjectorVersion = "0.9.6"
 lazy val monixVersion         = "3.0.0-M3"
+lazy val mySqlDriverVersion   = "8.0.11"
 lazy val postGisVersion       = "2.2.1"
 lazy val postgresVersion      = "42.2.2"
 lazy val refinedVersion       = "0.9.0"
@@ -308,8 +309,9 @@ lazy val example = project
   .dependsOn(core, postgres, specs2, scalatest, hikari, h2)
   .settings(
     libraryDependencies ++= Seq(
-      "co.fs2" %% "fs2-io"     % fs2CoreVersion,
-      "co.fs2" %% "fs2-scodec" % fs2CoreVersion
+      "co.fs2" %% "fs2-io"               % fs2CoreVersion,
+      "co.fs2" %% "fs2-scodec"           % fs2CoreVersion,
+      "mysql"  %  "mysql-connector-java" % mySqlDriverVersion
     )
   )
 
