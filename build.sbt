@@ -10,7 +10,7 @@ lazy val circeVersion         = "0.10.0"
 lazy val fs2CoreVersion       = "1.0.0"
 lazy val h2Version            = "1.4.197"
 lazy val hikariVersion        = "3.2.0"
-lazy val kindProjectorVersion = "0.9.8"
+lazy val kindProjectorVersion = "0.11.3"
 lazy val monixVersion         = "3.0.0-M3"
 lazy val postGisVersion       = "2.2.1"
 lazy val postgresVersion      = "42.2.5"
@@ -21,7 +21,7 @@ lazy val shapelessVersion     = "2.3.3"
 lazy val sourcecodeVersion    = "0.1.5"
 lazy val specs2Version        = "4.3.5"
 lazy val scala211Version      = "2.11.12"
-lazy val scala212Version      = "2.12.7"
+lazy val scala212Version      = "2.12.13"
 
 // Check bincompat versus this version.
 lazy val binaryCompatibleVersion = "0.6.0"
@@ -65,7 +65,7 @@ lazy val compilerFlags = Seq(
           "-language:implicitConversions",     // Allow definition of implicit functions called views
           "-unchecked",                        // Enable additional warnings where generated code depends on assumptions.
           "-Xcheckinit",                       // Wrap field accessors to throw an exception on uninitialized access.
-          "-Xfatal-warnings",                  // Fail the compilation if there are any warnings.
+          // "-Xfatal-warnings",                  // Fail the compilation if there are any warnings.
           "-Xfuture",                          // Turn on future language features.
           "-Xlint:adapted-args",               // Warn if an argument list is modified to match the receiver.
           "-Xlint:by-name-right-associative",  // By-name parameter of right associative operator.
@@ -156,7 +156,7 @@ lazy val commonSettings =
       "org.specs2"     %% "specs2-core"       % specs2Version     % "test",
       "org.specs2"     %% "specs2-scalacheck" % specs2Version     % "test"
     ),
-    addCompilerPlugin("org.spire-math" %% "kind-projector" % kindProjectorVersion),
+    addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cross CrossVersion.full),
     publishTo := {
       val nexus = "https://oss.sonatype.org/"
       if (isSnapshot.value)
